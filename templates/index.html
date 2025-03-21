@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Using Flask</title>
+    <link rel="icon" type="image/png" href="{{url_for('static', filename='images/favicon/favicon.png')}}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/styles.css')}}">
+</head>
+
+<body>
+
+    <main class="analysis-input-box">
+        <h1>THE <span class="sentiment-text">SENTIMENT</span><br />OF YOUR INPUT is.</h1>
+        <form method="post" action="/">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="prompt-buttons">
+                    <button type="button" id="btn-prompt-text" class="btn btn-dark">Text</button>
+                    <button type="button" id="btn-prompt-url" class="btn btn-dark">URL</button>
+                    <button type="button" id="btn-prompt-media" class="btn btn-dark">Media</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div-textarea">
+                    <label for="form-input-textarea" class="form-label">Input Prompt:</label>
+                    <textarea id="form-input-textarea" class="form-control" name="form-textarea"
+                        placeholder="Text_input"></textarea>
+                </div>
+                <div id="div-url">
+                    <label for="form-input-url" class="form-label">Input URL:</label>
+                    <input type="text" id="form-input-url" class="form-control" name="form-url"
+                        placeholder="https://www.example.com" />
+                </div>
+                <div id="div-media">
+                    <label for="form-input-media" class="form-label">Choose media:</label>
+                    <input type="file" id="form-input-media" class="form-control" name="form-media" accept=".csv" />
+                    <label for="csv-column" class="form-label mt-2">Column Name to Parse:</label>
+                    <input type="text" id="csv-column" class="form-control" name="column"
+                        placeholder="e.g., review_text" />
+                </div>
+                <div class="submit-button">
+                    <input type="submit" id="btn-find-sentiment" class="btn btn-success" value="Find Sentiment" />
+                </div>
+            </div>
+        </form>
+    </main>
+    <div id="sentiment-overlay">
+        <div id="sentiment-overlay-content"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='scripts/scripts.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
